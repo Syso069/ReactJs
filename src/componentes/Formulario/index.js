@@ -6,15 +6,6 @@ import ListaSuspensa from "../ListaSuspensa";
 import "./Formulario.css"
 
 const Formulario = (props) => {
-    const times = [
-        'Programação',
-        'Front-End',
-        'Data Science',
-        'Devops',
-        'UX e Design',
-        'Mobile',
-        ' Inovação e Gestão'
-        ]
 
         const [nome, setNome] = useState('');
         const [cargo, setCargo] = useState('');
@@ -29,11 +20,16 @@ const Formulario = (props) => {
                 imagem, 
                 time
             })
+            setNome('')
+            setCargo('')
+            setImagem('')
+            setTime('')
         } 
 
     return (
         <section className="formulario">
             <form onSubmit={aoSalvar}>
+                <h2>Preencha os dados para criar o card do colaborador</h2>
             <CampoTexto 
             obrigatorio={true} 
             label="Nome" 
@@ -57,7 +53,7 @@ const Formulario = (props) => {
             <ListaSuspensa 
             obrigatorio={true} 
             label="Time" 
-            itens={times}
+            itens={props.times}
             valor={time}
             aoAlterado={valor => setTime(valor)}
             />
